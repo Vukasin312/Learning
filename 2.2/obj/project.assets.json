@@ -8,19 +8,19 @@
     "net7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Petar\\.nuget\\packages\\": {}
+    "C:\\Users\\Tica\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Jobz\\Vuki\\Learning\\2.2\\2.2.csproj",
+      "projectUniqueName": "C:\\Users\\Tica\\source\\repos\\2.2\\2.2.csproj",
       "projectName": "2.2",
-      "projectPath": "D:\\Jobz\\Vuki\\Learning\\2.2\\2.2.csproj",
-      "packagesPath": "C:\\Users\\Petar\\.nuget\\packages\\",
-      "outputPath": "D:\\Jobz\\Vuki\\Learning\\2.2\\obj\\",
+      "projectPath": "C:\\Users\\Tica\\source\\repos\\2.2\\2.2.csproj",
+      "packagesPath": "C:\\Users\\Tica\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Tica\\source\\repos\\2.2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Petar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Tica\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -61,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
