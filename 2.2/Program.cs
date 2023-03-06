@@ -10,7 +10,7 @@
 			Author[] authors = new Author[2];
 			authors[0] = new Author("Vukasin", "rexxar.simic66@gmail.com", 'm');
 			authors[1] = new Author("Tijana", "tijana@gmail.com", 'f');		
-
+			// komentar
 			Book book = new Book("Knjiga", authors, 19.99, 99);
 
 			book.GetAuthorName();
