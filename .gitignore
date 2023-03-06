@@ -34,5 +34,6 @@ msbuild.err
 msbuild.wrn
 # Visual Studio 2015
 */.vs/
-.assets.cache
-.edittorconfig
+*.assets.cache
+*.edittorconfig
+.dtbcache.v2
