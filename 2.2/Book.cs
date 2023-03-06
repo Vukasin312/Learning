@@ -38,6 +38,7 @@
 		}
 		public string Render()
 		{
+			// dodaj da radi sa svi autori
 			return "Book[name = " + _name + _authors[0].Render() + _authors[1].Render() + "price = " + _price + "qty = " + _qty + "]";
 		}
 	}
