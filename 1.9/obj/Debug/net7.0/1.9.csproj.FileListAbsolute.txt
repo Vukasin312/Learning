@@ -1,0 +1,15 @@
+C:\Users\Tica\source\repos\1.9\bin\Debug\net7.0\1.9.exe
+C:\Users\Tica\source\repos\1.9\bin\Debug\net7.0\1.9.deps.json
+C:\Users\Tica\source\repos\1.9\bin\Debug\net7.0\1.9.runtimeconfig.json
+C:\Users\Tica\source\repos\1.9\bin\Debug\net7.0\1.9.dll
+C:\Users\Tica\source\repos\1.9\bin\Debug\net7.0\1.9.pdb
+C:\Users\Tica\source\repos\1.9\obj\Debug\net7.0\1.9.csproj.AssemblyReference.cache
+C:\Users\Tica\source\repos\1.9\obj\Debug\net7.0\1.9.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tica\source\repos\1.9\obj\Debug\net7.0\1.9.AssemblyInfoInputs.cache
+C:\Users\Tica\source\repos\1.9\obj\Debug\net7.0\1.9.AssemblyInfo.cs
+C:\Users\Tica\source\repos\1.9\obj\Debug\net7.0\1.9.csproj.CoreCompileInputs.cache
+C:\Users\Tica\source\repos\1.9\obj\Debug\net7.0\1.9.dll
+C:\Users\Tica\source\repos\1.9\obj\Debug\net7.0\refint\1.9.dll
+C:\Users\Tica\source\repos\1.9\obj\Debug\net7.0\1.9.pdb
+C:\Users\Tica\source\repos\1.9\obj\Debug\net7.0\1.9.genruntimeconfig.cache
+C:\Users\Tica\source\repos\1.9\obj\Debug\net7.0\ref\1.9.dll

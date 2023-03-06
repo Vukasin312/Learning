@@ -1,0 +1,15 @@
+C:\Users\Tica\source\repos\Testiranje\Testiranje\bin\Debug\net6.0\Testiranje.exe
+C:\Users\Tica\source\repos\Testiranje\Testiranje\bin\Debug\net6.0\Testiranje.deps.json
+C:\Users\Tica\source\repos\Testiranje\Testiranje\bin\Debug\net6.0\Testiranje.runtimeconfig.json
+C:\Users\Tica\source\repos\Testiranje\Testiranje\bin\Debug\net6.0\Testiranje.dll
+C:\Users\Tica\source\repos\Testiranje\Testiranje\bin\Debug\net6.0\Testiranje.pdb
+C:\Users\Tica\source\repos\Testiranje\Testiranje\obj\Debug\net6.0\Testiranje.csproj.AssemblyReference.cache
+C:\Users\Tica\source\repos\Testiranje\Testiranje\obj\Debug\net6.0\Testiranje.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tica\source\repos\Testiranje\Testiranje\obj\Debug\net6.0\Testiranje.AssemblyInfoInputs.cache
+C:\Users\Tica\source\repos\Testiranje\Testiranje\obj\Debug\net6.0\Testiranje.AssemblyInfo.cs
+C:\Users\Tica\source\repos\Testiranje\Testiranje\obj\Debug\net6.0\Testiranje.csproj.CoreCompileInputs.cache
+C:\Users\Tica\source\repos\Testiranje\Testiranje\obj\Debug\net6.0\Testiranje.dll
+C:\Users\Tica\source\repos\Testiranje\Testiranje\obj\Debug\net6.0\refint\Testiranje.dll
+C:\Users\Tica\source\repos\Testiranje\Testiranje\obj\Debug\net6.0\Testiranje.pdb
+C:\Users\Tica\source\repos\Testiranje\Testiranje\obj\Debug\net6.0\Testiranje.genruntimeconfig.cache
+C:\Users\Tica\source\repos\Testiranje\Testiranje\obj\Debug\net6.0\ref\Testiranje.dll

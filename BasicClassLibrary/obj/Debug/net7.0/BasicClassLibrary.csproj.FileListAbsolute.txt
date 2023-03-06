@@ -1,0 +1,15 @@
+C:\Users\Tica\source\repos\BasicClassLibrary\bin\Debug\net7.0\BasicClassLibrary.exe
+C:\Users\Tica\source\repos\BasicClassLibrary\bin\Debug\net7.0\BasicClassLibrary.deps.json
+C:\Users\Tica\source\repos\BasicClassLibrary\bin\Debug\net7.0\BasicClassLibrary.runtimeconfig.json
+C:\Users\Tica\source\repos\BasicClassLibrary\bin\Debug\net7.0\BasicClassLibrary.dll
+C:\Users\Tica\source\repos\BasicClassLibrary\bin\Debug\net7.0\BasicClassLibrary.pdb
+C:\Users\Tica\source\repos\BasicClassLibrary\obj\Debug\net7.0\BasicClassLibrary.csproj.AssemblyReference.cache
+C:\Users\Tica\source\repos\BasicClassLibrary\obj\Debug\net7.0\BasicClassLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tica\source\repos\BasicClassLibrary\obj\Debug\net7.0\BasicClassLibrary.AssemblyInfoInputs.cache
+C:\Users\Tica\source\repos\BasicClassLibrary\obj\Debug\net7.0\BasicClassLibrary.AssemblyInfo.cs
+C:\Users\Tica\source\repos\BasicClassLibrary\obj\Debug\net7.0\BasicClassLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Tica\source\repos\BasicClassLibrary\obj\Debug\net7.0\BasicClassLibrary.dll
+C:\Users\Tica\source\repos\BasicClassLibrary\obj\Debug\net7.0\refint\BasicClassLibrary.dll
+C:\Users\Tica\source\repos\BasicClassLibrary\obj\Debug\net7.0\BasicClassLibrary.pdb
+C:\Users\Tica\source\repos\BasicClassLibrary\obj\Debug\net7.0\BasicClassLibrary.genruntimeconfig.cache
+C:\Users\Tica\source\repos\BasicClassLibrary\obj\Debug\net7.0\ref\BasicClassLibrary.dll

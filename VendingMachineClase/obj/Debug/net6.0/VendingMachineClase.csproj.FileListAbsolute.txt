@@ -1,0 +1,15 @@
+C:\Users\Tica\source\repos\VendingMachineClase\bin\Debug\net6.0\VendingMachineClase.exe
+C:\Users\Tica\source\repos\VendingMachineClase\bin\Debug\net6.0\VendingMachineClase.deps.json
+C:\Users\Tica\source\repos\VendingMachineClase\bin\Debug\net6.0\VendingMachineClase.runtimeconfig.json
+C:\Users\Tica\source\repos\VendingMachineClase\bin\Debug\net6.0\VendingMachineClase.dll
+C:\Users\Tica\source\repos\VendingMachineClase\bin\Debug\net6.0\VendingMachineClase.pdb
+C:\Users\Tica\source\repos\VendingMachineClase\obj\Debug\net6.0\VendingMachineClase.csproj.AssemblyReference.cache
+C:\Users\Tica\source\repos\VendingMachineClase\obj\Debug\net6.0\VendingMachineClase.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tica\source\repos\VendingMachineClase\obj\Debug\net6.0\VendingMachineClase.AssemblyInfoInputs.cache
+C:\Users\Tica\source\repos\VendingMachineClase\obj\Debug\net6.0\VendingMachineClase.AssemblyInfo.cs
+C:\Users\Tica\source\repos\VendingMachineClase\obj\Debug\net6.0\VendingMachineClase.csproj.CoreCompileInputs.cache
+C:\Users\Tica\source\repos\VendingMachineClase\obj\Debug\net6.0\VendingMachineClase.dll
+C:\Users\Tica\source\repos\VendingMachineClase\obj\Debug\net6.0\refint\VendingMachineClase.dll
+C:\Users\Tica\source\repos\VendingMachineClase\obj\Debug\net6.0\VendingMachineClase.pdb
+C:\Users\Tica\source\repos\VendingMachineClase\obj\Debug\net6.0\VendingMachineClase.genruntimeconfig.cache
+C:\Users\Tica\source\repos\VendingMachineClase\obj\Debug\net6.0\ref\VendingMachineClase.dll

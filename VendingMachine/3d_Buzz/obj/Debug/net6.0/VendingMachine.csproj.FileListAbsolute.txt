@@ -1,0 +1,15 @@
+C:\Users\Tica\source\repos\VendingMachine\3d_Buzz\bin\Debug\net6.0\VendingMachine.exe
+C:\Users\Tica\source\repos\VendingMachine\3d_Buzz\bin\Debug\net6.0\VendingMachine.deps.json
+C:\Users\Tica\source\repos\VendingMachine\3d_Buzz\bin\Debug\net6.0\VendingMachine.runtimeconfig.json
+C:\Users\Tica\source\repos\VendingMachine\3d_Buzz\bin\Debug\net6.0\VendingMachine.dll
+C:\Users\Tica\source\repos\VendingMachine\3d_Buzz\bin\Debug\net6.0\VendingMachine.pdb
+C:\Users\Tica\source\repos\VendingMachine\3d_Buzz\obj\Debug\net6.0\VendingMachine.csproj.AssemblyReference.cache
+C:\Users\Tica\source\repos\VendingMachine\3d_Buzz\obj\Debug\net6.0\VendingMachine.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tica\source\repos\VendingMachine\3d_Buzz\obj\Debug\net6.0\VendingMachine.AssemblyInfoInputs.cache
+C:\Users\Tica\source\repos\VendingMachine\3d_Buzz\obj\Debug\net6.0\VendingMachine.AssemblyInfo.cs
+C:\Users\Tica\source\repos\VendingMachine\3d_Buzz\obj\Debug\net6.0\VendingMachine.csproj.CoreCompileInputs.cache
+C:\Users\Tica\source\repos\VendingMachine\3d_Buzz\obj\Debug\net6.0\VendingMachine.dll
+C:\Users\Tica\source\repos\VendingMachine\3d_Buzz\obj\Debug\net6.0\refint\VendingMachine.dll
+C:\Users\Tica\source\repos\VendingMachine\3d_Buzz\obj\Debug\net6.0\VendingMachine.pdb
+C:\Users\Tica\source\repos\VendingMachine\3d_Buzz\obj\Debug\net6.0\VendingMachine.genruntimeconfig.cache
+C:\Users\Tica\source\repos\VendingMachine\3d_Buzz\obj\Debug\net6.0\ref\VendingMachine.dll
