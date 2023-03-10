@@ -92,14 +92,9 @@
 		static string Guess()
 		{
 			int guess;
-			while (true)
+			while (!int.TryParse(Console.ReadLine(), out guess))
 			{
-				if (!int.TryParse(Console.ReadLine(), out guess))
-				Console.WriteLine("Please enter a number!");
-				else
-				{
-					break;
-				}					
+				Console.WriteLine("Please enter a number: ");
 			}
 			string guessString = guess.ToString();
 			return guessString;

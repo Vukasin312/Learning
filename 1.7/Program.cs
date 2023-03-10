@@ -4,7 +4,7 @@
 	{
 		static void Main(string[] args)
 		{
-			Date date = new Date(35, 2, 2014);
+			Date date = new Date(29, 2, 2016);
 			date.Print();
 
 			date.SetMonth(2);
