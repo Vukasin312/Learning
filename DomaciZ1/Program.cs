@@ -16,6 +16,7 @@
 
 			newInterval.Equals(interval1, interval2);
 			newInterval.GreaterThan(interval1, interval2);
+			newInterval.LessThan(interval1, interval2);
 
 			Console.ReadKey();
 		}

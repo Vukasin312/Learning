@@ -135,6 +135,46 @@
 				return true;
 			}
 		}
+		public bool LessThan(Interval left, Interval right)
+		{
+			bool lessThan = true;
+			int day = left.GetDays(_days);
+			int hour = left.GetHours(_hours);
+			int minutes = left.GetMinutes(_minutes);
+			int day1 = right.GetDays(_days);
+			int hour1 = right.GetHours(_hours);
+			int minutes1 = right.GetMinutes(_minutes);
+
+			if (day > day1)
+				lessThan = false;
+			else if (day < day1)
+				lessThan = true;
+			else if (day == day1)
+			{
+				if (hour < hour1)
+					lessThan = true;
+				else if (hour > hour1)
+					lessThan = false;
+				else if (hour == hour1)
+				{
+					if (minutes < minutes1)
+						lessThan = true;
+					else if (minutes > minutes1)
+						lessThan = false;
+					else Equals(left, right);
+				}
+			}
+			if (lessThan is true)
+			{
+				Console.WriteLine("Date {0} is less than date {1}", left, right);
+				return true;
+			}
+			else
+			{
+				Console.WriteLine("Date {0} is not less than date {1}", left, right);
+				return true;
+			}
+		}
 		public void Render()
 		{
 			string days = _days.ToString("D2");
@@ -147,6 +187,6 @@
 				Console.WriteLine("[{2}]{0}:{1}", hours, minutes, sign);
 			else
 				Console.WriteLine("[{3}]{0}:{1}:{2}", days, hours, minutes, sign);
-		}		
+		}
 	}
 }
