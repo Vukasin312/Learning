@@ -9,8 +9,6 @@
 *.user
 *.userosscache
 *.sln.docstates
-
-*.suo
 *.user
 _ReSharper.*
 bin
@@ -44,11 +42,12 @@ bld/
 [Ll]ogs/
 
 # Visual Studio 2015/2017 cache/options directory
+**.vs
+*.vs
 .vs/
 *.vsidx
 *.cache
 *.editorcofing
-.suo
 *.v2
 *.metadata.*
 *.projects.*
@@ -419,7 +418,7 @@ FodyWeavers.xsd
 *.props
 *.dtbcache.v2
 *.vsidx
-*.suo
 */obj/**
 # JetBrains Rider
 *.sln.iml
+
