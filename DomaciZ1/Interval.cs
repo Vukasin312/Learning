@@ -1,6 +1,6 @@
 ﻿namespace DomaciZ1
 {
-	internal class Interval
+	public class Interval
 	{
 		private int _days;
 		private int _hours;
@@ -18,64 +18,75 @@
 			if (_minutes > 60 || _minutes < 0)
 				throw new Exception();
 		}
+
+		// gde koristis parametar u ove funckije?????
 		public int GetDays(int days) { return _days; }
 		public int GetHours(int hours) { return _hours; }
 		public int GetMinutes(int minutes) { return _minutes; }
 		public bool GetSign(bool sign) { return _sign; }
-		public Interval Add(Interval left, Interval right)
-		{
-			int day = left.GetDays(_days);
-			int hour = left.GetHours(_hours);
-			int minutes = left.GetMinutes(_minutes);
-			int day1 = right.GetDays(_days);
-			int hour1 = right.GetHours(_hours);
-			int minutes1 = right.GetMinutes(_minutes);
+        // do ovde komentar
 
-			_days = day + day1;
-			_hours = hour + hour1;
-			_minutes = minutes + minutes1;
-			if (_minutes > 60)
-			{
-				_hours++;
-				_minutes = _minutes - 60;
-			}
-			else if (_hours > 24)
-			{
-				_days++;
-				_hours = _hours - 24;
-			}
+
+        // jedan parametar
+        public Interval Add(Interval left/*, Interval right*/)
+		{
+			//int day = left.GetDays(_days);
+			//int hour = left.GetHours(_hours);
+			//int minutes = left.GetMinutes(_minutes);
+			//int day1 = right.GetDays(_days);
+			//int hour1 = right.GetHours(_hours);
+			//int minutes1 = right.GetMinutes(_minutes);
+
+			//_days = day + day1;
+			//_hours = hour + hour1;
+			//_minutes = minutes + minutes1;
+			//if (_minutes > 60)
+			//{
+			//	_hours++;
+			//	_minutes = _minutes - 60;
+			//}
+			//else if (_hours > 24)
+			//{
+			//	_days++;
+			//	_hours = _hours - 24;
+			//}
 			return this;
 		}
-		public Interval Substract(Interval left, Interval right)
-		{
-			int day = left.GetDays(_days);
-			int hour = left.GetHours(_hours);
-			int minutes = left.GetMinutes(_minutes);
-			int day1 = right.GetDays(_days);
-			int hour1 = right.GetHours(_hours);
-			int minutes1 = right.GetMinutes(_minutes);
 
-			_days = day - day1;
-			_hours = hour - hour1;
-			_minutes = minutes - minutes1;
-			if (_minutes < 0)
-			{
-				_hours--;
-				_minutes = _minutes + 60;
-			}
-			if (_hours < 0)
-			{
-				_days--;
-				_hours = _hours + 24;
-			}
-			if (_days < 0)
-			{
-				_days = Math.Abs(_days);
-				_sign = false;
-			}
+        // jedan parametar
+        public Interval Subtract(Interval left/*, Interval right*/)
+		{
+			//int day = left.GetDays(_days);
+			//int hour = left.GetHours(_hours);
+			//int minutes = left.GetMinutes(_minutes);
+			//int day1 = right.GetDays(_days);
+			//int hour1 = right.GetHours(_hours);
+			//int minutes1 = right.GetMinutes(_minutes);
+
+			//_days = day - day1;
+			//_hours = hour - hour1;
+			//_minutes = minutes - minutes1;
+			//if (_minutes < 0)
+			//{
+			//	_hours--;
+			//	_minutes = _minutes + 60;
+			//}
+			//if (_hours < 0)
+			//{
+			//	_days--;
+			//	_hours = _hours + 24;
+			//}
+			//if (_days < 0)
+			//{
+			//	_days = Math.Abs(_days);
+			//	_sign = false;
+			//}
+
 			return this;
 		}
-		public bool Equals(Interval left, Interval right)
+
+        // jedan parametar
+        public bool Equals(Interval left, Interval right)
 		{
 			int day = left.GetDays(_days);
 			int hour = left.GetHours(_hours);
@@ -95,7 +106,9 @@
 				return false;
 			}
 		}
-		public bool GreaterThan(Interval left, Interval right)
+
+        // jedan parametar
+        public bool GreaterThan(Interval left, Interval right)
 		{
 			bool lessThan = true;
 			int day = left.GetDays(_days);
@@ -135,7 +148,9 @@
 				return true;
 			}
 		}
-		public bool LessThan(Interval left, Interval right)
+
+        // jedan parametar
+        public bool LessThan(Interval left, Interval right)
 		{
 			bool lessThan = true;
 			int day = left.GetDays(_days);
