@@ -95,6 +95,7 @@
 			int hour1 = right.GetHours(_hours);
 			int minutes1 = right.GetMinutes(_minutes);
 
+			// ne treba ti Console tu
 			if (day == day1 && hour == hour1 && minutes == minutes1)
 			{
 				Console.WriteLine("Two dates are equal");

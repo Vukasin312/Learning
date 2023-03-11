@@ -49,7 +49,7 @@ bld/
 *.cache
 *.editorcofing
 *.v2
-*.metadata.*
+*metadata*
 *.projects.*
 *.dgspec.*
 *.g.*
