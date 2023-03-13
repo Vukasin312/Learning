@@ -5,21 +5,20 @@
 		static void Main(string[] args)
 		{
 			Interval interval1 = new Interval(6, 12, 25, true);
-			Interval interval2 = new Interval(6, 12, 55, true);
+			Interval interval2 = new Interval(11, 12, 25, true);
+			Console.WriteLine("Interval 1: {0} interval 2: {1}", interval1.Render(), interval2.Render());
 
-			// nije dobro ne treba ti ovaj
-			// kad napravis da ima 1 argument ce ti radi bez ovaj
-			Interval newInterval = new Interval(0, 0, 0, true);
+			interval1.Equals(interval2);
+			interval1.GreaterThan(interval2);
+			interval1.LessThan(interval2);
 
-			newInterval.Add(interval1/*, interval2*/);
-			newInterval.Render();
+			//interval1.Add(interval2);
+			Console.WriteLine(interval1.Render()); 
 
-			newInterval.Subtract(interval1/*, interval2*/);
-			newInterval.Render();
+			interval1.Subtract(interval2);
+			Console.WriteLine(interval1.Render());
 
-			newInterval.Equals(interval1, interval2);
-			newInterval.GreaterThan(interval1, interval2);
-			newInterval.LessThan(interval1, interval2);
+			
 
 			Console.ReadKey();
 		}
