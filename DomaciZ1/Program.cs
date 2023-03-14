@@ -20,7 +20,9 @@
 			//interval1.Subtract(interval2);
 			//Console.WriteLine(interval1.Print());
 
-			TimeStamp timeStamp = new TimeStamp(2016, 10, 26, 10, 12, interval1);
+			TestClass.test();
+
+            TimeStamp timeStamp = new TimeStamp(2016, 10, 26, 10, 12, interval1);
 			TimeStamp timeStamp1 = new TimeStamp(2016, 10, 26, interval1);
 			Console.WriteLine(timeStamp.Print());
 			Console.WriteLine(timeStamp1.Print());
