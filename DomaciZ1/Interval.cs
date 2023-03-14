@@ -13,9 +13,9 @@
 			_hours = hours;
 			_minutes = minutes;
 			_sign = sign;
-			if (_hours > 24 || _hours <= 0)
+			if (_hours > 24 || _hours < 0)
 				throw new Exception();
-			if (_minutes > 60 || _minutes <= 0)
+			if (_minutes > 60 || _minutes < 0)
 				throw new Exception();
 		}				
 		public int GetDays() { return _days; }
@@ -33,7 +33,7 @@
 				_hours++;
 				_minutes -= 60;
 			}
-			else if (_hours > 24)
+			if (_hours > 24)
 			{
 				_days++;
 				_hours -= 24;
