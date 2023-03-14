@@ -33,7 +33,7 @@
 				_hours++;
 				_minutes -= 60;
 			}
-			else if (_hours > 24)
+			if (_hours > 24)
 			{
 				_days++;
 				_hours -= 24;
