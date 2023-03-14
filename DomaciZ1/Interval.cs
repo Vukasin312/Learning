@@ -4,9 +4,9 @@
 	{
 		private int _days;
 		private int _hours;
-		private int _minutes;
+		private int _minutes;		
 		private bool _sign;
-
+		
 		public Interval(int days, int hours, int minutes, bool sign)
 		{
 			_days = days;
@@ -31,12 +31,12 @@
 			if (_minutes > 60)
 			{
 				_hours++;
-				_minutes = _minutes - 60;
+				_minutes -= 60;
 			}
 			else if (_hours > 24)
 			{
 				_days++;
-				_hours = _hours - 24;
+				_hours -= 24;
 			}
 			return this;
 		}		
@@ -49,12 +49,12 @@
 			if (_minutes < 0)
 			{
 				_hours--;
-				_minutes = _minutes + 60;
+				_minutes += 60;
 			}
 			if (_hours < 0)
 			{
 				_days--;
-				_hours = _hours + 24;
+				_hours += 24;
 			}
 			if (_days < 0)
 			{
@@ -146,7 +146,7 @@
 			}
 		}	
 		
-		public string Render()
+		public string Print()
 		{			
 			char sign = '+';
 			if (_sign == false)
