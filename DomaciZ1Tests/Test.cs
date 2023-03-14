@@ -12,9 +12,9 @@ namespace DomaciZ1Tests
             Interval i1 = new(5, 3, 10, true);
             Interval i2 = new(2, 1, 15, true);
             i1.Add(i2);
-            Assert.AreEqual(7, i1.GetDays(0));
-            Assert.AreEqual(4, i1.GetHours(0));
-            Assert.AreEqual(25, i1.GetMinutes(0));
+            Assert.AreEqual(7, i1.GetDays());
+            Assert.AreEqual(4, i1.GetHours());
+            Assert.AreEqual(25, i1.GetMinutes());
         }
 
         [TestMethod]
@@ -23,9 +23,9 @@ namespace DomaciZ1Tests
             Interval i1 = new(5, 3, 10, true);
             Interval i2 = new(2, 1, 55, true);
             i1.Add(i2);
-            Assert.AreEqual(7, i1.GetDays(0));
-            Assert.AreEqual(5, i1.GetHours(0));
-            Assert.AreEqual(25, i1.GetMinutes(0));
+            Assert.AreEqual(7, i1.GetDays());
+            Assert.AreEqual(5, i1.GetHours());
+            Assert.AreEqual(5, i1.GetMinutes());
         }
         [TestMethod]
         public void SubstractInterval_ReturnsOk()
@@ -33,9 +33,19 @@ namespace DomaciZ1Tests
             Interval i1 = new(5, 3, 10, true);
             Interval i2 = new(2, 1, 15, true);
             i1.Subtract(i2);
-            Assert.AreEqual(3, i1.GetDays(0));
-            Assert.AreEqual(1, i1.GetHours(0));
-            Assert.AreEqual(55, i1.GetMinutes(0));
+            Assert.AreEqual(3, i1.GetDays());
+            Assert.AreEqual(1, i1.GetHours());
+            Assert.AreEqual(55, i1.GetMinutes());
+        }
+        [TestMethod]
+        public void AddInterval_GoesOver60MinsAnd24Hours_ReturnsOk()
+        {
+            Interval i1 = new(5, 23, 10, true);
+            Interval i2 = new(2, 1, 55, true);
+            i1.Add(i2);
+            Assert.AreEqual(8, i1.GetDays());
+            Assert.AreEqual(1, i1.GetHours());
+            Assert.AreEqual(5, i1.GetMinutes());
         }
     }
 }
