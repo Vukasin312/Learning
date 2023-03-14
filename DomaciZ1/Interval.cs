@@ -4,6 +4,7 @@
     public class Interval
 	{
         // Interval je nepromenljiv apstraktni tip podataka (immutable)
+        // https://www.codemag.com/Article/1905041/Immutability-in-C
         // ovo mozes da stavis readonly na property
         // npr: private readonly int _days;
 		// ili mozes da stavis samo da ima get bez set
