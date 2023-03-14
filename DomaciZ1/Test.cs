@@ -12,19 +12,21 @@ public class TestClass
 		znak = (sign) ? '+' : '-';
 		if (d > 0)
 		{
-			s = string.Format("%c%02d.%02d:%02d", znak, d, h, m);
+			s = $"[{znak}]{d.ToString("D2")}:{h.ToString("D2")}:{m.ToString("D2")}";
+			//s = string.Format("%c%02d.%02d:%02d", znak, d, h, m);
 		}
 		else
 		{
-			s = string.Format("%c%02d:%02d", znak, h, m);
-		}
+            s = $"{znak}{h.ToString("D2")}:{m.ToString("D2")}";
+            //s = string.Format("%c%02d:%02d", znak, h, m);
+        }
 
 		if (s.Equals(i.Print()))
 		{
-			Console.WriteLine("Matching! Score: %d/%d \r\n", (hits + 1), (total));
+			Console.WriteLine("Matching! Score: {0}/{1}", (hits + 1), (total));
 			return true;
 		}
-		Console.WriteLine("Not Matching! (Interval: %s, Expected: %s) Score: %d/%d \r\n", i.Print(), s, (hits),
+		Console.WriteLine("Not Matching! (Interval: {0}, Expected: {1}) Score: {2}/{3}", i.Print(), s, (hits),
 				(total));
 		return false;
 	}
@@ -52,7 +54,7 @@ public class TestClass
 		}
 		Console.WriteLine(
 				"Not Matching! (Interval1: {0}, Interval2: {1}, Calculated: {2}, Expected: {3} Score: {4} {5}",
-				a.ToString(), b.ToString(), equals, expect, (hits), (total));
+				a.Print(), b.Print(), equals, expect, (hits), (total));
 		return false;
 	}
 

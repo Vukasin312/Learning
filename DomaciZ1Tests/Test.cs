@@ -47,5 +47,14 @@ namespace DomaciZ1Tests
             Assert.AreEqual(1, i1.GetHours());
             Assert.AreEqual(5, i1.GetMinutes());
         }
+
+        [TestMethod]
+        public void AddInterval_1s_ReturnsOk()
+        {
+            var test = new Interval(28, 20, 33, true).Add(new Interval(28, 3, 32, true));
+            Assert.AreEqual(57, test.GetDays());
+            Assert.AreEqual(0, test.GetHours());
+            Assert.AreEqual(5, test.GetMinutes());
+        }
     }
 }

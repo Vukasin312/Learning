@@ -1,8 +1,14 @@
 ﻿namespace DomaciZ1
 {
-	public class Interval
+
+    public class Interval
 	{
-		private int _days;
+        // Interval je nepromenljiv apstraktni tip podataka (immutable)
+        // ovo mozes da stavis readonly na property
+        // npr: private readonly int _days;
+		// ili mozes da stavis samo da ima get bez set
+		// npr: private int _days { get; }
+        private int _days;
 		private int _hours;
 		private int _minutes;		
 		private bool _sign;
@@ -21,9 +27,12 @@
 		public int GetDays() { return _days; }
 		public int GetHours() { return _hours; }
 		public int GetMinutes() { return _minutes; }
-		public bool GetSign() { return _sign; }			
-		
-		public Interval Add(Interval interval)
+		public bool GetSign() { return _sign; }
+
+
+        // Operacija sabiranja ne sme izmeniti stanje operanada.
+        // ne uzimas u obzir znak Intervala +/-
+        public Interval Add(Interval interval)
 		{			
 			this._days += interval._days;
 			this._hours += interval._hours;
@@ -39,9 +48,11 @@
 				_hours -= 24;
 			}
 			return this;
-		}		
+		}
 
-		public Interval Subtract(Interval interval)
+        // Operacija oduzimanja ne sme izmeniti stanje operanada.
+        // ne uzimas u obzir znak Intervala +/-
+        public Interval Subtract(Interval interval)
 		{
 			this._days -= interval._days;
 			this._minutes -= interval._minutes;
@@ -68,12 +79,12 @@
 		{
 			if (_days == interval._days && _hours == interval._hours && _minutes == interval._minutes)
 			{
-				Console.WriteLine("Two dates are equal");
+				//Console.WriteLine("Two dates are equal");
 				return true;
 			}
 			else
 			{
-				Console.WriteLine("Two dates are not equal");
+				//Console.WriteLine("Two dates are not equal");
 				return false;
 			}
 		}	
@@ -102,12 +113,12 @@
 			}
 			if (greaterThan is true)
 			{
-				Console.WriteLine("Date {0} is greather than date {1}",this , interval);
+				//Console.WriteLine("Date {0} is greather than date {1}",this , interval);
 				return true;
 			}
 			else
 			{
-				Console.WriteLine("Date {0} is not greather than date {1}",this, interval);
+				//Console.WriteLine("Date {0} is not greather than date {1}",this, interval);
 				return false;
 			}
 		}	
@@ -136,12 +147,12 @@
 			}
 			if (lessThan is true)
 			{
-				Console.WriteLine("Date {0} is less than date {1}", this, interval);
+				//Console.WriteLine("Date {0} is less than date {1}", this, interval);
 				return true;
 			}
 			else
 			{
-				Console.WriteLine("Date {0} is not less than date {1}", this, interval);
+				//Console.WriteLine("Date {0} is not less than date {1}", this, interval);
 				return false;
 			}
 		}	
