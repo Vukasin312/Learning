@@ -8,6 +8,7 @@ namespace DomaciZ1
 {
 	internal class TimeStamp
 	{
+		// isto kao u Interval, mora da zabranis da se menjaju vrednosti
 		private int _year;
 		private int _month;
 		private int _day;
@@ -23,6 +24,8 @@ namespace DomaciZ1
 			this._hour = hour;
 			this._minute = minute;
 			_zoneOffSet= zoneOffSet;
+
+			// poruke u exception, ocu da znam zasto mi ne radi
 			if (_hour > 24 || _hour < 0)
 				throw new Exception();
 			if (_minute > 60 || _minute < 0)
@@ -41,8 +44,10 @@ namespace DomaciZ1
 			this._day = day;
 			this._hour = 0;
 			this._minute = 0;
-			_zoneOffSet= zoneOffSet;
+			_zoneOffSet = zoneOffSet;
 		}
+		// isto ko u interval, ne smes da menjas trenutni objekat
+		// ne citas zadatak lepo :D 
 		public TimeStamp Add(Interval interval)
 		{
 			this._day += interval.GetDays();
