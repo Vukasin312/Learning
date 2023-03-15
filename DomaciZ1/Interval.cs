@@ -120,129 +120,107 @@ namespace DomaciZ1
 		}
 
 		public bool GreaterThan(Interval interval)
-		{
-			bool greaterThan = true;
-			if (this._sign == false && interval._sign == true)
-				return greaterThan = false;
+		{			
 			if (this._sign == true && interval._sign == false)
-				return greaterThan = true;
-			if (this._sign == true && interval._sign == true)
-			{
-				if (_days < interval._days)
-					greaterThan = false;
-				else if (_days > interval._days)
-					greaterThan = true;
-				else if (_days == interval._days)
-				{
-					if (_hours > interval._hours)
-						greaterThan = true;
-					else if (_hours < interval._hours)
-						greaterThan = false;
-					else if (_hours == interval._hours)
-					{
-						if (_minutes > interval._minutes)
-							greaterThan = true;
-						else if (_minutes < interval._minutes)
-							greaterThan = false;
-						else greaterThan = false;
-					}
-				}
-			}
-			if (this._sign == false && interval._sign == false)
-			{
-				if (_days < interval._days)
-					greaterThan = true;
-				else if (_days > interval._days)
-					greaterThan = false;
-				else if (_days == interval._days)
-				{
-					if (_hours > interval._hours)
-						greaterThan = false;
-					else if (_hours < interval._hours)
-						greaterThan = true;
-					else if (_hours == interval._hours)
-					{
-						if (_minutes > interval._minutes)
-							greaterThan = false;
-						else if (_minutes < interval._minutes)
-							greaterThan = true;
-						else greaterThan = false;
-					}
-				}
-			}
-			if (greaterThan is true)
-			{
-				//Console.WriteLine("Date {0} is greather than date {1}", this, interval);
 				return true;
+			else if (this._sign == false && interval._sign == true)
+				return false;
+			else if (this._sign == true && interval._sign == true)
+			{
+				if (_days < interval._days)
+					return false;
+				else if (_days > interval._days)
+					return true;
+				else
+				{
+					if (_hours > interval._hours)
+						return true;
+					else if (_hours < interval._hours)
+						return false;
+					else
+					{
+						if (_minutes > interval._minutes)
+							return true;
+						else if (_minutes < interval._minutes)
+							return false;
+						else return false;
+					}
+				}
 			}
 			else
 			{
-				//Console.WriteLine("Date {0} is not greather than date {1}", this, interval);
-				return false;
-			}
+				if (_days < interval._days)
+					return true;
+				else if (_days > interval._days)
+					return false;
+				else
+				{
+					if (_hours > interval._hours)
+						return false;
+					else if (_hours < interval._hours)
+						return true;
+					else
+					{
+						if (_minutes > interval._minutes)
+							return false;
+						else if (_minutes < interval._minutes)
+							return true;
+						else return false;
+					}
+				}
+			}			
 		}
 
 		public bool LessThan(Interval interval)
 		{
-			bool lessThan = true;
 			if (this._sign == true && interval._sign == false)
-				return lessThan = false;
+				return false;
 			else if (this._sign == false && interval._sign == true)
-				return lessThan = true;
+				return true;
 			else if (this._sign == true && interval._sign == true)
 			{
 				if (_days > interval._days)
-					lessThan = false;
+					return false;
 				else if (_days < interval._days)
-					lessThan = true;
-				else if (_days == interval._days)
+					return true;
+				else
 				{
 					if (_hours < interval._hours)
-						lessThan = true;
+						return true;
 					else if (_hours > interval._hours)
-						lessThan = false;
-					else if (_hours == interval._hours)
+						return false;
+					else
 					{
 						if (_minutes < interval._minutes)
-							lessThan = true;
+							return true;
 						else if (_minutes > interval._minutes)
-							lessThan = false;
-						else lessThan = false;
+							return false;
+						else return false;
 					}
 				}
-			}
-			else if (this._sign == false && interval._sign == false)
-			{
-				if (_days > interval._days)
-					lessThan = true;
-				else if (_days < interval._days)
-					lessThan = false;
-				else if (_days == interval._days)
-				{
-					if (_hours < interval._hours)
-						lessThan = false;
-					else if (_hours > interval._hours)
-						lessThan = true;
-					else if (_hours == interval._hours)
-					{
-						if (_minutes < interval._minutes)
-							lessThan = false;
-						else if (_minutes > interval._minutes)
-							lessThan = true;
-						else lessThan = false;
-					}
-				}
-			}
-			if (lessThan is true)
-			{
-				//Console.WriteLine("Date {0} is less than date {1}", this, interval);
-				return true;
 			}
 			else
 			{
-				//Console.WriteLine("Date {0} is not less than date {1}", this, interval);
-				return false;
-			}
+				if (_days > interval._days)
+					return true;
+				else if (_days < interval._days)
+					return false;
+				else
+				{
+					if (_hours < interval._hours)
+						return false;
+					else if (_hours > interval._hours)
+						return true;
+					else
+					{
+						if (_minutes < interval._minutes)
+							return false;
+						else if (_minutes > interval._minutes)
+							return true;
+						else return false;
+					}
+				}
+			}			
 		}
 
 		public string Print()
