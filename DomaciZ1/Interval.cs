@@ -1,19 +1,13 @@
 ﻿namespace DomaciZ1
 {
 
-    public class Interval
+	public class Interval
 	{
-        // Interval je nepromenljiv apstraktni tip podataka (immutable)
-        // https://www.codemag.com/Article/1905041/Immutability-in-C
-        // ovo mozes da stavis readonly na property
-        // npr: private readonly int _days;
-		// ili mozes da stavis samo da ima get bez set
-		// npr: private int _days { get; }
-        private int _days;
-		private int _hours;
-		private int _minutes;		
-		private bool _sign;
-		
+		private int _days { get; }
+		private int _hours { get; }
+		private int _minutes { get; }
+		private bool _sign { get; }
+
 		public Interval(int days, int hours, int minutes, bool sign)
 		{
 			_days = days;
@@ -24,56 +18,141 @@
 				throw new Exception();
 			if (_minutes > 60 || _minutes < 0)
 				throw new Exception();
-		}				
+		}
 		public int GetDays() { return _days; }
 		public int GetHours() { return _hours; }
 		public int GetMinutes() { return _minutes; }
 		public bool GetSign() { return _sign; }
 
+		public Interval Add(Interval interval)
+		{
+			var sign = true;
+			int days = 0;
+			int hours = 0;
+			int minutes = 0;
+			if (_sign == true && interval._sign == true)
+			{
+				days = _days + interval._days;
+				hours = _hours + interval._hours;
+				minutes = _minutes + interval._minutes;
+			}
+			if (_sign == true && interval._sign != true)
+			{
+				days = _days - interval._days;
+				hours = _hours - interval._hours;
+				minutes = _minutes - interval._minutes;
+				if (this.GreaterThan(interval) != true)
+					sign = false;
+			}
+			if (_sign != true && interval._sign == true)
+			{
+				days = -_days + interval._days;
+				hours = -_hours + interval._hours;
+				minutes = -_minutes + interval._minutes;
+				if (this.GreaterThan(interval) == true)
+					sign = false;
 
-        // Operacija sabiranja ne sme izmeniti stanje operanada.
-        // ne uzimas u obzir znak Intervala +/-
-        public Interval Add(Interval interval)
-		{			
-			this._days += interval._days;
-			this._hours += interval._hours;
-			this._minutes += interval._minutes;
-			if (_minutes > 60)
-			{
-				_hours++;
-				_minutes -= 60;
 			}
-			if (_hours > 24)
+			if (_sign == false && interval._sign == false)
 			{
-				_days++;
-				_hours -= 24;
+				days = -_days + -interval._days;
+				hours = -_hours + -interval._hours;
+				minutes = -_minutes + -interval._minutes;
+				sign = false;
 			}
-			return this;
+
+			if (minutes >= 60)
+			{
+				hours++;
+				minutes -= 60;
+			}
+			if (hours >= 24)
+			{
+				days++;
+				hours -= 24;
+			}
+			if (minutes < 0)
+			{
+				hours--;
+				minutes += 60;
+			}
+			if (hours < 0)
+			{
+				days--;
+				hours += 24;
+			}
+			if (days < 0)
+			{
+				days = Math.Abs(days);
+			}
+			Interval result = new Interval(days, hours, minutes, sign);
+			return result;
 		}
 
-        // Operacija oduzimanja ne sme izmeniti stanje operanada.
-        // ne uzimas u obzir znak Intervala +/-
-        public Interval Subtract(Interval interval)
+		public Interval Subtract(Interval interval)
 		{
-			this._days -= interval._days;
-			this._minutes -= interval._minutes;
-			this._hours -= interval._hours;
-			if (_minutes < 0)
+			var sign = true;
+			int days = 0;
+			int hours = 0;
+			int minutes = 0;
+			if (_sign == true && interval._sign == true)
 			{
-				_hours--;
-				_minutes += 60;
+				days = _days - interval._days;
+				hours = _hours - interval._hours;
+				minutes = _minutes - interval._minutes;
+				if (this.GreaterThan(interval) != true)
+					sign = false;
 			}
-			if (_hours < 0)
+			if (_sign == true && interval._sign != true)
 			{
-				_days--;
-				_hours += 24;
+				days = _days - -interval._days;
+				hours = _hours - -interval._hours;
+				minutes = _minutes - -interval._minutes;
+				if (this.GreaterThan(interval) != true)
+					sign = false;
 			}
-			if (_days < 0)
+			if (_sign != true && interval._sign == true)
 			{
-				_days = Math.Abs(_days);
-				_sign = false;
+				days = -_days - interval._days;
+				hours = -_hours - interval._hours;
+				minutes = -_minutes - interval._minutes;
+				if (this.GreaterThan(interval) != true)
+					sign = false;
 			}
-			return this;
+			if (_sign == false && interval._sign == false)
+			{
+				days = -_days - -interval._days;
+				hours = -_hours - -interval._hours;
+				minutes = -_minutes - -interval._minutes;
+				sign = false;
+			}
+			if (minutes >= 60)
+			{
+				hours++;
+				minutes -= 60;
+			}
+			if (hours >= 24)
+			{
+				days++;
+				hours -= 24;
+			}
+			if (minutes < 0)
+			{
+				hours--;
+				minutes += 60;
+			}
+			if (hours < 0)
+			{
+				days--;
+				hours += 24;
+			}
+			if (days < 0)
+			{
+				days = Math.Abs(days);
+				sign = false;
+			}
+			Interval result = new Interval(days, hours, minutes, sign);
+			return result;
 		}
 
 		public bool Equals(Interval interval)
@@ -88,8 +167,8 @@
 				//Console.WriteLine("Two dates are not equal");
 				return false;
 			}
-		}	
-		
+		}
+
 		public bool GreaterThan(Interval interval)
 		{
 			bool greaterThan = true;
@@ -114,16 +193,16 @@
 			}
 			if (greaterThan is true)
 			{
-				//Console.WriteLine("Date {0} is greather than date {1}",this , interval);
+				//Console.WriteLine("Date {0} is greather than date {1}", this, interval);
 				return true;
 			}
 			else
 			{
-				//Console.WriteLine("Date {0} is not greather than date {1}",this, interval);
+				//Console.WriteLine("Date {0} is not greather than date {1}", this, interval);
 				return false;
 			}
-		}	
-		
+		}
+
 		public bool LessThan(Interval interval)
 		{
 			bool lessThan = true;
@@ -156,17 +235,17 @@
 				//Console.WriteLine("Date {0} is not less than date {1}", this, interval);
 				return false;
 			}
-		}	
-		
+		}
+
 		public string Print()
-		{			
+		{
 			char sign = '+';
 			if (_sign == false)
 				sign = '-';
 			if (_days == 00)
 				return "[" + sign + "]" + _hours.ToString("D2") + ":" + _minutes.ToString("D2");
 			else
-				return "[" + sign + "]" + _days.ToString("D2") + ":" + _hours.ToString("D2") + ":" + _minutes.ToString("D2");			
+				return "[" + sign + "]" + _days.ToString("D2") + ":" + _hours.ToString("D2") + ":" + _minutes.ToString("D2");
 		}
 	}
 }

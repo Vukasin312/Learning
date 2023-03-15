@@ -56,7 +56,7 @@ namespace DomaciZ1Tests
             var result = i1.Add(i2);
             Assert.AreEqual(57, result.GetDays());
             Assert.AreEqual(0, result.GetHours());
-            Assert.AreEqual(5, result.GetMinutes());
+            Assert.AreEqual(0, result.GetMinutes());
         }
     }
 }
