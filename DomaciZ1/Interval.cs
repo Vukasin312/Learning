@@ -1,6 +1,4 @@
-﻿using System.Reflection.Metadata;
-
-namespace DomaciZ1
+﻿namespace DomaciZ1
 {
 
 	public class Interval
@@ -28,6 +26,7 @@ namespace DomaciZ1
 
 		public Interval Add(Interval interval)
 		{
+			bool biggerNumber = false;
 			bool sign = true;
 			int days = 0;
 			int hours = 0;
@@ -38,34 +37,49 @@ namespace DomaciZ1
 				hours = _hours + interval._hours;
 				minutes = _minutes + interval._minutes;
 			}
-			else if (_sign == true && interval._sign != true)
+			else if (_sign == true && interval._sign == false)
 			{
 				days = _days - interval._days;
 				hours = _hours - interval._hours;
 				minutes = _minutes - interval._minutes;
+				biggerNumber = BiggerNumber(interval);
+				if (biggerNumber == true)
+					biggerNumber = false;
+				else
+				{
+					biggerNumber = true;
+					sign = false;
+				}
 			}
-			else if (_sign != true && interval._sign == true)
+			else if (_sign == false && interval._sign == true)
 			{
 				days = -_days + interval._days;
 				hours = -_hours + interval._hours;
 				minutes = -_minutes + interval._minutes;
+				biggerNumber = BiggerNumber(interval);
+				if (biggerNumber == true)
+					sign = false;
+				else
+					biggerNumber = false;
 			}
 			else if (_sign == false && interval._sign == false)
 			{
 				days = _days + interval._days;
 				hours = _hours + interval._hours;
 				minutes = _minutes + interval._minutes;
-				sign = false;
+				biggerNumber = true;
 			}
-			if (days <= 0 && hours <= 0 && minutes <= 0)
-				NegativeNumber(ref days, ref hours, ref minutes, ref sign);
+			if (biggerNumber == true)
+				NegativeTime(ref days, ref hours, ref minutes, ref sign);
 			else
-				PositiveNumber(ref days, ref hours, ref minutes);
+				PositiveTime(ref days, ref hours, ref minutes);
 			Interval result = new Interval(days, hours, minutes, sign);
 			return result;
 		}
+
 		public Interval Subtract(Interval interval)
 		{
+			bool biggerNumber = false;
 			var sign = true;
 			int days = 0;
 			int hours = 0;
@@ -75,27 +89,45 @@ namespace DomaciZ1
 				days = _days - interval._days;
 				hours = _hours - interval._hours;
 				minutes = _minutes - interval._minutes;
+				biggerNumber = BiggerNumber(interval);
+				if (biggerNumber == true)
+					biggerNumber = false;
+				else
+				{
+					biggerNumber = true;
+					sign = false;
+				}
 			}
-			else if (_sign == true && interval._sign != true)
+			else if (_sign == true && interval._sign == false)
 			{
 				days = _days + interval._days;
 				hours = _hours + interval._hours;
 				minutes = _minutes + interval._minutes;
+				sign = true;
 			}
-			else if (_sign != true && interval._sign == true)
+			else if (_sign == false && interval._sign == true)
 			{
-				days = _days + interval._days;
-				hours = _hours + interval._hours;
-				minutes = _minutes + interval._minutes;
+				days = -_days - interval._days;
+				hours = -_hours - interval._hours;
+				minutes = -_minutes - interval._minutes;
 				sign = false;
+				biggerNumber = true;
 			}
 			else if (_sign == false && interval._sign == false)
 			{
 				days = -_days + interval._days;
 				hours = -_hours + interval._hours;
 				minutes = -_minutes + interval._minutes;
+				biggerNumber = BiggerNumber(interval);
+				if (biggerNumber == true)
+					sign = false;
+				else
+					biggerNumber = false;
 			}
-			PositiveNumber(ref days, ref hours, ref minutes);
+			if (biggerNumber == true)
+				NegativeTime(ref days, ref hours, ref minutes, ref sign);
+			else
+				PositiveTime(ref days, ref hours, ref minutes);
 			Interval result = new Interval(days, hours, minutes, sign);
 			return result;
 		}
@@ -114,13 +146,13 @@ namespace DomaciZ1
 					return true;
 			}
 			else
-			{				
+			{
 				return false;
 			}
 		}
 
 		public bool GreaterThan(Interval interval)
-		{			
+		{
 			if (this._sign == true && interval._sign == false)
 				return true;
 			else if (this._sign == false && interval._sign == true)
@@ -168,7 +200,7 @@ namespace DomaciZ1
 						else return false;
 					}
 				}
-			}			
+			}
 		}
 
 		public bool LessThan(Interval interval)
@@ -220,7 +252,7 @@ namespace DomaciZ1
 						else return false;
 					}
 				}
-			}			
+			}
 		}
 
 		public string Print()
@@ -235,7 +267,7 @@ namespace DomaciZ1
 			else
 				return "[" + sign + "]" + _days.ToString("D2") + ":" + _hours.ToString("D2") + ":" + _minutes.ToString("D2");
 		}
-		private static void PositiveNumber(ref int days, ref int hours, ref int minutes)
+		private static void PositiveTime(ref int days, ref int hours, ref int minutes)
 		{
 			if (minutes >= 60)
 			{
@@ -262,22 +294,70 @@ namespace DomaciZ1
 				days = Math.Abs(days);
 			}
 		}
-		private static void NegativeNumber(ref int days, ref int hours, ref int minutes, ref bool sign)
+		private static void NegativeTime(ref int days, ref int hours, ref int minutes, ref bool sign)
 		{
+			if (sign == false)
+			{
+				if (minutes >= 0 && minutes < 60)
+				{
+					minutes = minutes - 60;
+					hours++;
+				}
+				if (hours >= 0 && hours < 24)
+				{
+					hours = hours - 24;
+					days++;
+				}
+				if (minutes <= -60)
+				{
+					hours--;
+					minutes += 60;
+				}
+				if (hours < -24)
+				{
+					days--;
+					hours += 24;
+				}
+			}
 			if (minutes >= 60)
 			{
-				hours--;
+				hours++;
 				minutes -= 60;
 			}
 			if (hours >= 24)
 			{
-				days--;
+				days++;
 				hours -= 24;
 			}
 			days = Math.Abs(days);
 			hours = Math.Abs(hours);
 			minutes = Math.Abs(minutes);
 			sign = false;
+		}
+		private bool BiggerNumber(Interval interval)
+		{
+			bool biggerNumber;
+			if (_days < interval._days)
+				biggerNumber = false;
+			else if (_days > interval._days)
+				biggerNumber = true;
+			else
+			{
+				if (_hours > interval._hours)
+					biggerNumber = true;
+				else if (_hours < interval._hours)
+					biggerNumber = false;
+				else
+				{
+					if (_minutes > interval._minutes)
+						biggerNumber = true;
+					else if (_minutes < interval._minutes)
+						biggerNumber = false;
+					else biggerNumber = false;
+				}
+			}
+
+			return biggerNumber;
 		}
 	}
 }

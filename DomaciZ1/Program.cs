@@ -4,8 +4,10 @@
 	{
 		static void Main(string[] args)
 		{
-			Interval interval1 = new Interval(0, 0, 30, true);
-			Interval interval2 = new Interval(0, 0, 35, false);
+			Interval interval1 = new Interval(17, 2, 15, false);
+			Interval interval2 = new Interval(25, 5, 45, true);
+
+			//61, 20, 17, false
 
 			Interval result = interval1.Add(interval2);
 			Console.WriteLine(result.Print());			
