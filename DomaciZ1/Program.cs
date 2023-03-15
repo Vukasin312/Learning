@@ -4,8 +4,8 @@
 	{
 		static void Main(string[] args)
 		{
-			Interval interval1 = new Interval(10, 20, 30, true);
-			Interval interval2 = new Interval(28, 23, 30, true);
+			Interval interval1 = new Interval(0, 0, 30, true);
+			Interval interval2 = new Interval(0, 0, 35, false);
 
 			Interval result = interval1.Add(interval2);
 			Console.WriteLine(result.Print());			
@@ -19,7 +19,7 @@
 			interval1.GreaterThan(interval2);
 			interval1.LessThan(interval2);
 
-			//TestClass.test();
+			TestClass.test();
 
 			//TimeStamp timeStamp = new TimeStamp(2016, 10, 26, 10, 12, interval1);
 			//TimeStamp timeStamp1 = new TimeStamp(2016, 10, 26, interval1);

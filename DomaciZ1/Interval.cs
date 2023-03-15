@@ -1,4 +1,6 @@
-﻿namespace DomaciZ1
+﻿using System.Reflection.Metadata;
+
+namespace DomaciZ1
 {
 
 	public class Interval
@@ -26,7 +28,7 @@
 
 		public Interval Add(Interval interval)
 		{
-			var sign = true;
+			bool sign = true;
 			int days = 0;
 			int hours = 0;
 			int minutes = 0;
@@ -36,59 +38,32 @@
 				hours = _hours + interval._hours;
 				minutes = _minutes + interval._minutes;
 			}
-			if (_sign == true && interval._sign != true)
+			else if (_sign == true && interval._sign != true)
 			{
 				days = _days - interval._days;
 				hours = _hours - interval._hours;
 				minutes = _minutes - interval._minutes;
-				if (this.GreaterThan(interval) != true)
-					sign = false;
 			}
-			if (_sign != true && interval._sign == true)
+			else if (_sign != true && interval._sign == true)
 			{
 				days = -_days + interval._days;
 				hours = -_hours + interval._hours;
 				minutes = -_minutes + interval._minutes;
-				if (this.GreaterThan(interval) == true)
-					sign = false;
-
 			}
-			if (_sign == false && interval._sign == false)
+			else if (_sign == false && interval._sign == false)
 			{
-				days = -_days + -interval._days;
-				hours = -_hours + -interval._hours;
-				minutes = -_minutes + -interval._minutes;
+				days = _days + interval._days;
+				hours = _hours + interval._hours;
+				minutes = _minutes + interval._minutes;
 				sign = false;
 			}
-
-			if (minutes >= 60)
-			{
-				hours++;
-				minutes -= 60;
-			}
-			if (hours >= 24)
-			{
-				days++;
-				hours -= 24;
-			}
-			if (minutes < 0)
-			{
-				hours--;
-				minutes += 60;
-			}
-			if (hours < 0)
-			{
-				days--;
-				hours += 24;
-			}
-			if (days < 0)
-			{
-				days = Math.Abs(days);
-			}
+			if (days <= 0 && hours <= 0 && minutes <= 0)
+				NegativeNumber(ref days, ref hours, ref minutes, ref sign);
+			else
+				PositiveNumber(ref days, ref hours, ref minutes);
 			Interval result = new Interval(days, hours, minutes, sign);
 			return result;
 		}
-
 		public Interval Subtract(Interval interval)
 		{
 			var sign = true;
@@ -100,57 +75,27 @@
 				days = _days - interval._days;
 				hours = _hours - interval._hours;
 				minutes = _minutes - interval._minutes;
-				if (this.GreaterThan(interval) != true)
-					sign = false;
 			}
-			if (_sign == true && interval._sign != true)
+			else if (_sign == true && interval._sign != true)
 			{
-				days = _days - -interval._days;
-				hours = _hours - -interval._hours;
-				minutes = _minutes - -interval._minutes;
-				if (this.GreaterThan(interval) != true)
-					sign = false;
+				days = _days + interval._days;
+				hours = _hours + interval._hours;
+				minutes = _minutes + interval._minutes;
 			}
-			if (_sign != true && interval._sign == true)
+			else if (_sign != true && interval._sign == true)
 			{
-				days = -_days - interval._days;
-				hours = -_hours - interval._hours;
-				minutes = -_minutes - interval._minutes;
-				if (this.GreaterThan(interval) != true)
-					sign = false;
-			}
-			if (_sign == false && interval._sign == false)
-			{
-				days = -_days - -interval._days;
-				hours = -_hours - -interval._hours;
-				minutes = -_minutes - -interval._minutes;
+				days = _days + interval._days;
+				hours = _hours + interval._hours;
+				minutes = _minutes + interval._minutes;
 				sign = false;
 			}
-			if (minutes >= 60)
+			else if (_sign == false && interval._sign == false)
 			{
-				hours++;
-				minutes -= 60;
+				days = -_days + interval._days;
+				hours = -_hours + interval._hours;
+				minutes = -_minutes + interval._minutes;
 			}
-			if (hours >= 24)
-			{
-				days++;
-				hours -= 24;
-			}
-			if (minutes < 0)
-			{
-				hours--;
-				minutes += 60;
-			}
-			if (hours < 0)
-			{
-				days--;
-				hours += 24;
-			}
-			if (days < 0)
-			{
-				days = Math.Abs(days);
-				sign = false;
-			}
+			PositiveNumber(ref days, ref hours, ref minutes);
 			Interval result = new Interval(days, hours, minutes, sign);
 			return result;
 		}
@@ -159,12 +104,17 @@
 		{
 			if (_days == interval._days && _hours == interval._hours && _minutes == interval._minutes)
 			{
-				//Console.WriteLine("Two dates are equal");
-				return true;
+				if (_days == 0 && _minutes == 0 && _hours == 0 && interval._days == 0 && interval._days == 0 && interval._days == 0)
+					return true;
+				else if (_sign == true && interval._sign == false)
+					return false;
+				else if (_sign == false && interval._sign == true)
+					return false;
+				else
+					return true;
 			}
 			else
-			{
-				//Console.WriteLine("Two dates are not equal");
+			{				
 				return false;
 			}
 		}
@@ -172,23 +122,52 @@
 		public bool GreaterThan(Interval interval)
 		{
 			bool greaterThan = true;
-			if (_days < interval._days)
-				greaterThan = false;
-			else if (_days > interval._days)
-				greaterThan = true;
-			else if (_days == interval._days)
+			if (this._sign == false && interval._sign == true)
+				return greaterThan = false;
+			if (this._sign == true && interval._sign == false)
+				return greaterThan = true;
+			if (this._sign == true && interval._sign == true)
 			{
-				if (_hours > interval._hours)
-					greaterThan = true;
-				else if (_hours < interval._hours)
+				if (_days < interval._days)
 					greaterThan = false;
-				else if (_hours == interval._hours)
+				else if (_days > interval._days)
+					greaterThan = true;
+				else if (_days == interval._days)
 				{
-					if (_minutes > interval._minutes)
+					if (_hours > interval._hours)
 						greaterThan = true;
-					else if (_minutes < interval._minutes)
+					else if (_hours < interval._hours)
 						greaterThan = false;
-					else Equals(interval);
+					else if (_hours == interval._hours)
+					{
+						if (_minutes > interval._minutes)
+							greaterThan = true;
+						else if (_minutes < interval._minutes)
+							greaterThan = false;
+						else greaterThan = false;
+					}
+				}
+			}
+			if (this._sign == false && interval._sign == false)
+			{
+				if (_days < interval._days)
+					greaterThan = true;
+				else if (_days > interval._days)
+					greaterThan = false;
+				else if (_days == interval._days)
+				{
+					if (_hours > interval._hours)
+						greaterThan = false;
+					else if (_hours < interval._hours)
+						greaterThan = true;
+					else if (_hours == interval._hours)
+					{
+						if (_minutes > interval._minutes)
+							greaterThan = false;
+						else if (_minutes < interval._minutes)
+							greaterThan = true;
+						else greaterThan = false;
+					}
 				}
 			}
 			if (greaterThan is true)
@@ -206,23 +185,52 @@
 		public bool LessThan(Interval interval)
 		{
 			bool lessThan = true;
-			if (_days > interval._days)
-				lessThan = false;
-			else if (_days < interval._days)
-				lessThan = true;
-			else if (_days == interval._days)
+			if (this._sign == true && interval._sign == false)
+				return lessThan = false;
+			else if (this._sign == false && interval._sign == true)
+				return lessThan = true;
+			else if (this._sign == true && interval._sign == true)
 			{
-				if (_hours < interval._hours)
-					lessThan = true;
-				else if (_hours > interval._hours)
+				if (_days > interval._days)
 					lessThan = false;
-				else if (_hours == interval._hours)
+				else if (_days < interval._days)
+					lessThan = true;
+				else if (_days == interval._days)
 				{
-					if (_minutes < interval._minutes)
+					if (_hours < interval._hours)
 						lessThan = true;
-					else if (_minutes > interval._minutes)
+					else if (_hours > interval._hours)
 						lessThan = false;
-					else Equals(interval);
+					else if (_hours == interval._hours)
+					{
+						if (_minutes < interval._minutes)
+							lessThan = true;
+						else if (_minutes > interval._minutes)
+							lessThan = false;
+						else lessThan = false;
+					}
+				}
+			}
+			else if (this._sign == false && interval._sign == false)
+			{
+				if (_days > interval._days)
+					lessThan = true;
+				else if (_days < interval._days)
+					lessThan = false;
+				else if (_days == interval._days)
+				{
+					if (_hours < interval._hours)
+						lessThan = false;
+					else if (_hours > interval._hours)
+						lessThan = true;
+					else if (_hours == interval._hours)
+					{
+						if (_minutes < interval._minutes)
+							lessThan = false;
+						else if (_minutes > interval._minutes)
+							lessThan = true;
+						else lessThan = false;
+					}
 				}
 			}
 			if (lessThan is true)
@@ -242,10 +250,56 @@
 			char sign = '+';
 			if (_sign == false)
 				sign = '-';
-			if (_days == 00)
-				return "[" + sign + "]" + _hours.ToString("D2") + ":" + _minutes.ToString("D2");
+			if (_days == 00 && _minutes == 00 && _hours == 00)
+				return _hours.ToString("D2") + ":" + _minutes.ToString("D2");
+			else if (_days == 00)
+				return sign + _hours.ToString("D2") + ":" + _minutes.ToString("D2");
 			else
 				return "[" + sign + "]" + _days.ToString("D2") + ":" + _hours.ToString("D2") + ":" + _minutes.ToString("D2");
+		}
+		private static void PositiveNumber(ref int days, ref int hours, ref int minutes)
+		{
+			if (minutes >= 60)
+			{
+				hours++;
+				minutes -= 60;
+			}
+			if (hours >= 24)
+			{
+				days++;
+				hours -= 24;
+			}
+			if (minutes < 0)
+			{
+				hours--;
+				minutes += 60;
+			}
+			if (hours < 0)
+			{
+				days--;
+				hours += 24;
+			}
+			if (days < 0)
+			{
+				days = Math.Abs(days);
+			}
+		}
+		private static void NegativeNumber(ref int days, ref int hours, ref int minutes, ref bool sign)
+		{
+			if (minutes >= 60)
+			{
+				hours--;
+				minutes -= 60;
+			}
+			if (hours >= 24)
+			{
+				days--;
+				hours -= 24;
+			}
+			days = Math.Abs(days);
+			hours = Math.Abs(hours);
+			minutes = Math.Abs(minutes);
+			sign = false;
 		}
 	}
 }
