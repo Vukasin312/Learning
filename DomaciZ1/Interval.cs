@@ -18,7 +18,7 @@
 				throw new Exception();
 			if (_minutes > 60 || _minutes < 0)
 				throw new Exception();
-		}
+		}		
 		public int GetDays() { return _days; }
 		public int GetHours() { return _hours; }
 		public int GetMinutes() { return _minutes; }
@@ -356,7 +356,6 @@
 					else biggerNumber = false;
 				}
 			}
-
 			return biggerNumber;
 		}
 	}

@@ -4,31 +4,40 @@
 	{
 		static void Main(string[] args)
 		{
-			Interval interval1 = new Interval(17, 2, 15, false);
-			Interval interval2 = new Interval(25, 5, 45, true);
+			//Interval interval1 = new Interval(17, 2, 15, false);
+			//Interval interval2 = new Interval(25, 5, 45, true);
+			Interval zero = new Interval(0, 0, 0, true);
 
-			//61, 20, 17, false
+			////61, 20, 17, false
 
-			Interval result = interval1.Add(interval2);
-			Console.WriteLine(result.Print());			
+			//Interval result = interval1.Add(interval2);
+			//Console.WriteLine(result.Print());			
 
-			result = interval1.Subtract(interval2);
-			Console.WriteLine(result.Print());			
+			//result = interval1.Subtract(interval2);
+			//Console.WriteLine(result.Print());			
 
-			Console.WriteLine("Interval 1: {0} interval 2: {1}", interval1.Print(), interval2.Print());
-			
-			interval1.Equals(interval2);			
-			interval1.GreaterThan(interval2);
-			interval1.LessThan(interval2);
+			//Console.WriteLine("Interval 1: {0} interval 2: {1}", interval1.Print(), interval2.Print());
 
-			TestClass.test();
+			//interval1.Equals(interval2);			
+			//interval1.GreaterThan(interval2);
+			//interval1.LessThan(interval2);
 
-			//TimeStamp timeStamp = new TimeStamp(2016, 10, 26, 10, 12, interval1);
-			//TimeStamp timeStamp1 = new TimeStamp(2016, 10, 26, interval1);
+			//TestClass.test();
+			Interval interval = new Interval(6666666, 3, 23, true);
+			Interval zoneOffSet = new Interval(0, 5, 30, true);
+
+			TimeStamp timeStamp = new TimeStamp(19946, 4, 29, 10, 8, zero);
+			TimeStamp timeStamp1 = new TimeStamp(2016, 10, 26, zoneOffSet);
+
 			//Console.WriteLine(timeStamp.Print());
+			//Console.WriteLine(interval.Print());
 			//Console.WriteLine(timeStamp1.Print());
-			//timeStamp.Add(interval1);
-			//Console.WriteLine(timeStamp.Print());
+
+			//TimeStamp result = timeStamp.Add(interval);
+			//Console.WriteLine(result.Print());
+
+			TimeStamp result1 = timeStamp.Subtract(interval);
+			Console.WriteLine(result1.Print());
 
 			Console.ReadKey();
 		}
