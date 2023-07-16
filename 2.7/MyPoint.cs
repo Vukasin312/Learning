@@ -26,7 +26,7 @@
 		{
 			x = x - _x;
 			y = y - _y;
-			return Math.Sqrt(x*x + y*y);
+			return Math.Sqrt(x * x + y * y);
 		}
 		public double Distance(MyPoint myPoint)
 		{

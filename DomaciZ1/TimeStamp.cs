@@ -31,6 +31,11 @@
 			_zoneOffSet = zoneOffSet;
 			Exceptions();
 		}
+		public int GetYear() { return _year; }
+		public int GetMonth() { return _month; }
+		public int GetDayInMonth() { return _dayInMonth; }
+		public int GetHours() { return _hours; }
+		public int GetMinutes() { return _minutes; }
 		public TimeStamp Add(Interval interval)
 		{
 			var year = 0;
@@ -83,6 +88,62 @@
 				year = this._year;
 			}
 			ValidTime(ref year, ref month, ref dayInMonth, ref hours, ref minutes);
+			TimeStamp result = new TimeStamp(year, month, dayInMonth, hours, minutes, _zoneOffSet);
+			return result;
+		}
+		public TimeStamp SubtractTimeStamps(TimeStamp timeStamp)
+		{
+			var year = 0;
+			var month = 0;
+			var dayInMonth = 0;
+			var hours = 0;
+			var minutes = 0;
+
+			year = this._year - timeStamp.GetYear();
+			month = this._month - timeStamp.GetMonth();
+			dayInMonth = this._dayInMonth - timeStamp.GetDayInMonth();
+			hours = this._hours - timeStamp.GetHours();
+			minutes = this._minutes - timeStamp.GetMinutes();
+
+			if (minutes < 0)
+			{
+				minutes = minutes + 60;
+				hours--;
+			}
+			if (hours < 0)
+			{
+				hours = hours + 24;
+				dayInMonth--;
+			}
+			if (month < 0)
+			{
+				month = month + 12;
+				year--;
+			}
+			if (dayInMonth < 0)
+			{
+				if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
+					dayInMonth += 31;
+				else if (month == 4 || month == 6 || month == 9 || month == 11)
+					dayInMonth += 30;
+				else if (month == 2 && (year % 4) == 0)
+				{
+					if (year % 100 == 0 && year % 400 != 0)
+						dayInMonth += 28;
+					else
+						dayInMonth += 29;
+				}
+				else if (month == 2 && (year % 4) != 0)
+					dayInMonth += 28;
+				else if (month == 0)
+					dayInMonth += 31;
+				month++;
+				if (month > 12)
+				{
+					month -= 12;
+					year++;
+				}
+			}
 			TimeStamp result = new TimeStamp(year, month, dayInMonth, hours, minutes, _zoneOffSet);
 			return result;
 		}
@@ -209,14 +270,14 @@
 				if (dayInMonth > 31)
 					dayInMonth -= 31;
 				else if (dayInMonth <= 0)
-					dayInMonth += 31;				
+					dayInMonth += 31;
 			}
 			else if (month == 4 || month == 6 || month == 9 || month == 11)
 			{
 				if (dayInMonth > 30)
 					dayInMonth -= 30;
 				else if (dayInMonth <= 0)
-					dayInMonth += 30;				
+					dayInMonth += 30;
 			}
 			else if (month == 2 && (year % 4) == 0)
 			{
@@ -225,7 +286,7 @@
 					if (dayInMonth > 28)
 						dayInMonth -= 28;
 					else if (dayInMonth <= 0)
-						dayInMonth += 28;					
+						dayInMonth += 28;
 				}
 				else
 				{
@@ -240,7 +301,7 @@
 				if (dayInMonth > 28)
 					dayInMonth -= 28;
 				else if (dayInMonth <= 0)
-					dayInMonth += 28;				
+					dayInMonth += 28;
 			}
 			else if (month == 0)
 			{

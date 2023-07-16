@@ -23,11 +23,12 @@
 			//interval1.LessThan(interval2);
 
 			//TestClass.test();
-			Interval interval = new Interval(6666666, 3, 23, true);
-			Interval zoneOffSet = new Interval(0, 5, 30, true);
+			//Interval interval = new Interval(6666666, 3, 23, true);
+			//Interval zoneOffSet = new Interval(0, 5, 30, true);
 
-			TimeStamp timeStamp = new TimeStamp(19946, 4, 29, 10, 8, zero);
-			TimeStamp timeStamp1 = new TimeStamp(2016, 10, 26, zoneOffSet);
+			TimeStamp timeStamp = new TimeStamp(2000, 12, 15, 10, 30, zero);
+			TimeStamp timeStamp2 = new TimeStamp(1997, 1, 31, 15, 15, zero);
+			//TimeStamp timeStamp1 = new TimeStamp(2016, 10, 26, zoneOffSet);
 
 			//Console.WriteLine(timeStamp.Print());
 			//Console.WriteLine(interval.Print());
@@ -36,8 +37,10 @@
 			//TimeStamp result = timeStamp.Add(interval);
 			//Console.WriteLine(result.Print());
 
-			TimeStamp result1 = timeStamp.Subtract(interval);
-			Console.WriteLine(result1.Print());
+			//TimeStamp result1 = timeStamp.Subtract(interval);
+			//Console.WriteLine(result1.Print());
+			TimeStamp result2 = timeStamp.SubtractTimeStamps(timeStamp2);
+			Console.WriteLine(result2.Print());
 
 			Console.ReadKey();
 		}

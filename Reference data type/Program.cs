@@ -22,6 +22,7 @@
             {
                 Console.WriteLine($"Id:{person.Id}, Name: {person.Name}, Last name: {person.LastName}");
             }
+            Console.ReadKey();
         }
 
         public class Person

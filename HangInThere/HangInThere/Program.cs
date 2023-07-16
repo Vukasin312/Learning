@@ -5,7 +5,7 @@
 		static void Main(string[] args)
 		{
 			string random = Random();
-			//Console.WriteLine(random);
+			Console.WriteLine(random);
 			Console.WriteLine("Enter a three digit number: ");
 			int tries = 0;
 			List<string> listNotClose = new List<string>();
