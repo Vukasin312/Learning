@@ -6,11 +6,9 @@
 		private GuessNumber _guessNumber;
 
 		public string GoodGuess()
-		{
-			RandomNumber randomNumber = new RandomNumber();
-			GuessNumber guessNumber = new GuessNumber();
-			string number = guessNumber.GetGuessNumber();
-			string random = randomNumber.GetRandomNumber();
+		{			
+			string number = _guessNumber.GetGuessNumber();
+			string random = _randomNumber.GetRandomNumber();
 			bool notClose = true;
 			bool close = false;
 			bool hangInThere = false;

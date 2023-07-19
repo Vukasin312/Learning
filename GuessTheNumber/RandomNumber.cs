@@ -8,17 +8,19 @@ namespace GuessTheNumber
 {
 	internal class RandomNumber
 	{
-		private string _randomNumber;	
-		public string GetRandomNumber() { return _randomNumber; }
-		public void SetRandomNumber()
+		private string _randomNumber;
+		public RandomNumber()
 		{
 			_randomNumber = GetRandomNumber();
-		}
-		public RandomNumber()
+		}		
+		public string GetRandomNumber() { return _randomNumber; }
+		
+		public string GenereteNumber()
 		{
 			Random random = new Random();
 			int num = random.Next(100, 999);
-			_randomNumber = num.ToString();			
+			_randomNumber = num.ToString();
+			return _randomNumber;
 		}
     }
 }

@@ -1,28 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GuessTheNumber
+﻿namespace GuessTheNumber
 {
 	internal class GuessNumber
 	{
-		private string _guessNumber;		
-		
-		public string GetGuessNumber() { return _guessNumber; }
-		public void SetGuessNumber()
+		private string _guessNumber;
+		public GuessNumber()
 		{
 			_guessNumber = GetGuessNumber();
 		}
-		
-		public string Guess()
-		{			
-			string number = Num();
-			_guessNumber = number;			
-			return _guessNumber;
-		}
-		public string Num()
+		public string GetGuessNumber() { return _guessNumber; }
+		public string YourGuess()
 		{
 			int guess;
 			while (!int.TryParse(Console.ReadLine(), out guess))
@@ -33,7 +19,7 @@ namespace GuessTheNumber
 			{
 				Console.WriteLine("Please Enter a number between 100 and 999!");
 			}
-			return guess.ToString();
+			return _guessNumber = guess.ToString();
 		}
 	}
 }
