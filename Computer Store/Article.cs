@@ -26,7 +26,7 @@ namespace Computer_Store
 		}
 		public int GetID() {  return _id; }
 		public string GetName() { return _name; }
-		public int GetBarcode() { return _barcode;}
+		public int GetBarCode() { return _barcode;}
 		public string GetType() { return _type;}
 		public int GetPrice() { return _price;}
 		public int GetDiscount() { return _discount;}

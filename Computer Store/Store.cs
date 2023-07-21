@@ -46,9 +46,8 @@
 						break;
                 }
 			}
-
 		}
-		private void AddItems(List<Article> articles)
+		private void AddItem(List<Article> articles)
 		{
 			
 		}
@@ -60,19 +59,19 @@
 				int discount = (articles[i].GetPrice() * articles[i].GetDiscount()) / 100;
 				discount = articles[i].GetPrice() - discount;
 				Console.WriteLine("ID: {0} Name: {1} Type: {2} Hashcode: {3} Price: {4} Discount: {5}% Price with discount: {6}"
-					, articles[i].GetID(), articles[i].GetName(), articles[i].GetType(), articles[i].GetHashCode(), articles[i].GetPrice()
+					, articles[i].GetID(), articles[i].GetName(), articles[i].GetType(), articles[i].GetBarCode(), articles[i].GetPrice()
 					, articles[i].GetDiscount(), discount);
 			}
 			Console.ReadKey(true);
 		}
 		private int MainMenuChoice()
 		{
-			int guess;
-			while (!int.TryParse(Console.ReadLine(), out guess))
+			int choice;
+			while (!int.TryParse(Console.ReadLine(), out choice))
 			{
 				Console.WriteLine("Invalid choice");
 			}
-			return guess;
+			return choice;
 		}
 		private void MainMenu()
 		{
