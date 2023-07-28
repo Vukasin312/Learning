@@ -8,5 +8,6 @@
 
 		public string StoresCollectionName { get; set; } = null!;
 		public string ArticlesCollectionName { get; set; } = null!;
+		public string StoragesCollectionName { get; set; } = null!;
 	}
 }

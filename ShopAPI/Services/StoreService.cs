@@ -1,40 +1,45 @@
 ﻿using Computer_Store;
-using Microsoft.Extensions.Options;
-using MongoDB.Driver;
-using ShopAPI.Models;
 
 namespace ShopAPI.Services
 {
-	public class StoreService
+	public interface IStoreService
 	{
-		private readonly IMongoCollection<Store> _storeCollection;		
+		Task<Store> GetStoreAsync(string Id);
+		Task<Store> AddStoreAsync(Store store);
+		Task<Store> UpdateStoreAsync(Store store);
+		Task<Store> DeleteStoreAsync(Store store);
+	}
+	public class StoreService : IStoreService
+	{
+		private readonly StoreDBService _storeDBService;
 
-		public StoreService(
-			IOptions<WebStoreDatabaseSettings> storeStoreDatabaseSettings)
+		public StoreService(StoreDBService storeDBService)
 		{
-			var mongoClient = new MongoClient(
-				storeStoreDatabaseSettings.Value.ConnectionString);
-
-			var mongoDatabase = mongoClient.GetDatabase(
-				storeStoreDatabaseSettings.Value.DatabaseName);
-
-			_storeCollection = mongoDatabase.GetCollection<Store>(
-				storeStoreDatabaseSettings.Value.StoresCollectionName);
+			_storeDBService = storeDBService;
+		}		
+		public async Task<Store> GetStoreAsync(string id)
+		{
+			var store = await _storeDBService.GetAsync(id);
+			return store;
 		}
-
-		public async Task<List<Store>> GetAsync() =>
-			await _storeCollection.Find(_ => true).ToListAsync();
-
-		public async Task<Store?> GetAsync(string id) =>
-			await _storeCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
-
-		public async Task CreateAsync(Store newStore) =>
-			await _storeCollection.InsertOneAsync(newStore);
-
-		public async Task UpdateAsync(string id, Store updatedStore) =>
-			await _storeCollection.ReplaceOneAsync(x => x.Id == id, updatedStore);
-
-		public async Task RemoveAsync(string id) =>
-			await _storeCollection.DeleteOneAsync(x => x.Id == id);		
+		public async Task<Store> AddStoreAsync(Store store)
+		{
+			await _storeDBService.CreateAsync(store);
+			return store;
+		}
+		public async Task<Store> UpdateStoreAsync(Store store)
+		{
+			var storeFromDB = await _storeDBService.GetAsync(store.Id);
+			if (storeFromDB == null) throw new Exception("Store not found");
+			await _storeDBService.UpdateAsync(store.Id, store);
+			return store;
+		}
+		public async Task<Store> DeleteStoreAsync(Store store)
+		{
+			var storeFromDB = await _storeDBService.GetAsync(store.Id);
+			if (storeFromDB == null) throw new Exception("Store not found");
+			await _storeDBService.RemoveAsync(store.Id);
+			return store;
+		}
 	}
 }

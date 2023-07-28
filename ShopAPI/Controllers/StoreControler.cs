@@ -9,46 +9,43 @@ namespace ShopAPI.Controllers
 	[ApiController]
 	public class StoreControler : ControllerBase
 	{
-		private readonly StoreService _storeService;
-        public StoreControler(StoreService storeService)
+		private readonly StoreDBService _storeDBService;
+		private readonly IStoreService _storeService;
+
+        public StoreControler(StoreDBService storeDBService, IStoreService storeService)
         {
-            _storeService = storeService;
+			_storeService = storeService;
+            _storeDBService = storeDBService;
         }
         [HttpGet("GetStores")]
 		public async Task<List<Store>> GetStoresAsync() 
 		{
-			var stores = await _storeService.GetAsync();
+			var stores = await _storeDBService.GetAsync();			
 			return stores;
 		}
 		[HttpGet("GetStore")]
-		public async Task<Store> GetStoreAsync(Store store)
+		public async Task<Store> GetStoreAsync(string Id)
 		{
-			await _storeService.GetAsync();
+			var store = await _storeService.GetStoreAsync(Id);			
 			return store;
 		}
 		[HttpPost("AddStore")]
 		public async Task<Store> AddStoreAsync(Store store)
 		{
-			await _storeService.CreateAsync(store);
+			await _storeService.AddStoreAsync(store);
 			return store;
 		}
 		[HttpPut("UpdateStore")]
-		public async Task<Store> UpdateStore(Store store)
+		public async Task<Store> UpdateStoreAsync(Store store)
 		{
-			var storeFromDB = await _storeService.GetAsync(store.Id);
-			if (storeFromDB == null)  throw new Exception("Store not found");
-			await _storeService.UpdateAsync(store.Id, store);
+			await _storeService.UpdateStoreAsync(store);
 			return store;
 		}
 		[HttpDelete("DeleteStore")]
-		public async Task<Store> DeleteStore(Store store)
+		public async Task<Store> DeleteStoreAsync(Store store)
 		{
-			var storeFromDB = await _storeService.GetAsync(store.Id);
-			if (storeFromDB == null) throw new Exception("Store not found");
-			await _storeService.RemoveAsync(store.Id);
+			await _storeService.DeleteStoreAsync(store);
 			return store;
-		}
-		// Dodaj GetStore i DeleteStore
-		// Napravi isto za Artikli i Storage
+		}		
 	}
 }

@@ -14,8 +14,12 @@ namespace ShopAPI
 			builder.Services.Configure<WebStoreDatabaseSettings>(
 				builder.Configuration.GetSection("WebStore"));
 
-			builder.Services.AddSingleton<StoreService>();
-			builder.Services.AddSingleton<ArticleService>();
+			builder.Services.AddSingleton<StoreDBService>();
+			builder.Services.AddSingleton<ArticleDBService>();
+			builder.Services.AddSingleton<StorageDBService>();
+			builder.Services.AddSingleton<IArticleService, ArticleService>();
+			builder.Services.AddSingleton<IStoreService, StoreService>();
+			builder.Services.AddSingleton<IStorageService, StorageService>();
 
 			builder.Services.AddControllers();
 			// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

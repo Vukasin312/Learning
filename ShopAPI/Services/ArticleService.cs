@@ -1,40 +1,46 @@
 ﻿using Computer_Store;
-using Microsoft.Extensions.Options;
-using MongoDB.Driver;
-using ShopAPI.Models;
 
 namespace ShopAPI.Services
 {
-	public class ArticleService
+	public interface IArticleService
+	{		
+		Task<Article> GetArticleAsync(string id);
+		Task<Article> AddArticleAsync(Article article);
+		Task<Article> DeleteArticleAsync(Article article);
+		Task<Article> UpdateArticleAsync(Article article);
+	}
+	public class ArticleService : IArticleService
 	{
-		private readonly IMongoCollection<Article> _articleCollection;
+		private readonly ArticleDBService _articleDBService;
 
-		public ArticleService(
-			IOptions<WebStoreDatabaseSettings> articleStoreDatabaseSettings)
+		public ArticleService(ArticleDBService articleDBService)
 		{
-			var mongoClient = new MongoClient(
-				articleStoreDatabaseSettings.Value.ConnectionString);
-
-			var mongoDatabase = mongoClient.GetDatabase(
-				articleStoreDatabaseSettings.Value.DatabaseName);
-
-			_articleCollection = mongoDatabase.GetCollection<Article>(
-				articleStoreDatabaseSettings.Value.ArticlesCollectionName);
+			_articleDBService = articleDBService;
 		}
 
-		public async Task<List<Article>> GetAsync() =>
-			await _articleCollection.Find(_ => true).ToListAsync();
-
-		public async Task<Article?> GetAsync(string id) =>
-			await _articleCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
-
-		public async Task CreateAsync(Article newStore) =>
-			await _articleCollection.InsertOneAsync(newStore);
-
-		public async Task UpdateAsync(string id, Article updatedStore) =>
-			await _articleCollection.ReplaceOneAsync(x => x.Id == id, updatedStore);
-
-		public async Task RemoveAsync(string id) =>
-			await _articleCollection.DeleteOneAsync(x => x.Id == id);
+		public async Task<Article> GetArticleAsync(string id)
+		{
+			var article = await _articleDBService.GetAsync(id);
+			return article;
+		}
+		public async Task<Article> AddArticleAsync(Article article)
+		{
+			await _articleDBService.CreateAsync(article);
+			return article;
+		}
+		public async Task<Article> UpdateArticleAsync(Article article)
+		{
+			var articleFromDB = await _articleDBService.GetAsync(article.Id);
+			if (articleFromDB == null) throw new Exception("Article not found");
+			await _articleDBService.UpdateAsync(article.Id, article);
+			return article;
+		}
+		public async Task<Article> DeleteArticleAsync(Article article)
+		{
+			var articleFromDB = await _articleDBService.GetAsync(article.Id);
+			if (articleFromDB == null) throw new Exception("Article not found");
+			await _articleDBService.RemoveAsync(article.Id);
+			return article;
+		}
 	}
 }
